@@ -13,9 +13,11 @@
     <div class="container">
         <h1>Billy Bob's Burgers & Subs</h1>
         <h3>Food with attitude</h3><br>
-        
+
+        <!Primary Form for ordering both Subs and Burgers>
         <form class="border border-secondary-subtle border-2 rounded-2" method="post">
 
+            <!Dropdown Menu (Subs/Burgers)>
             <div class="dropdown">
                 <select class="btn btn-secondary" name="sandwichDropdown" id="sandwichDropdown" onchange="updateForm()" aria-label="Please Choose a Sandwich">
                     <option selected>Please Choose a Sandwich</option>
@@ -61,36 +63,38 @@
                 </div><br>
             </div>
 
-            <div class="mb-3">
-            <select class="form-select" multiple aria-label="Select your toppings">
-                <option selected>No Toppings</option>
-                <option value="lettuce">Lettuce</option>
-                <option value="tomato">Tomato</option>
-                <option value="onion">Onion</option>
-                <option value="cheese">Cheese</option>
-                <option value="ketchup">Ketchup</option>
-                <option value="mayo">Mayo</option>
-            </select>
-            <div id="multiSelectHelp" class="form-text">Hold Control or Command to select multiple toppings.</div>
-            </div>
+            <div id="divGenericFormFields">
+                <div class="mb-3">
+                    <select class="form-select" multiple aria-label="Select your toppings">
+                        <option selected>No Toppings</option>
+                        <option value="lettuce">Lettuce</option>
+                        <option value="tomato">Tomato</option>
+                        <option value="onion">Onion</option>
+                        <option value="cheese">Cheese</option>
+                        <option value="ketchup">Ketchup</option>
+                        <option value="mayo">Mayo</option>
+                    </select>
+                    <div id="multiSelectHelp" class="form-text">Hold Control or Command to select multiple toppings.</div>
+                </div>
 
-            <div class="mb-3">
-                <label for="inputName" class="form-label">Name</label>
-                <input type="text" class="form-control" id="inputName">
+                <div class="mb-3">
+                    <label for="inputName" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="inputName">
+                </div>
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="inputPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="inputPassword">
+                </div>
+                <div class="mb-3">
+                    <label for="inputComment" class="form-label">Comments</label>
+                    <textarea class="form-control" id="inputComment" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
-            <div class="mb-3">
-                <label for="inputEmail" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
-            </div>
-            <div class="mb-3">
-                <label for="inputPassword" class="form-label">Password</label>
-                <input type="password" class="form-control" id="inputPassword">
-            </div>
-            <div class="mb-3">
-                <label for="inputComment" class="form-label">Comments</label>
-                <textarea class="form-control" id="inputComment" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
         </form><br>
 
         <footer class="text-center text-lg-start bg-body-tertiary text-muted">
@@ -111,17 +115,26 @@
             let divSubMeatSelect =  document.getElementById("divSubMeatSelect");
             let divSubCheckBox =  document.getElementById("divSubCheckbox");
             let divBurgerCheckbox = document.getElementById("divBurgerCheckbox")
+            let divGenericFormFields = document.getElementById("divGenericFormFields")
 
             if (sandwichValue === "burger") {
                 divSubMeatSelect.style.display = "none";
                 divSubCheckBox.style.display = "none";
                 divBurgerCheckbox.style.display = "block";
+                divGenericFormFields.style.display = "block";
 
             }
-            else {
+            else if (sandwichValue === "sub") {
                 divSubMeatSelect.style.display = "block";
                 divSubCheckBox.style.display = "block";
                 divBurgerCheckbox.style.display = "none";
+                divGenericFormFields.style.display = "block";
+            }
+            else {
+                divSubMeatSelect.style.display = "none"
+                divSubCheckBox.style.display = "none";
+                divBurgerCheckbox.style.display = "none";
+                divGenericFormFields.style.display = "none";
             }
         }
     </script>
