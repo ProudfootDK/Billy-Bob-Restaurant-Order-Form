@@ -13,43 +13,53 @@
     <div class="container">
         <h1>Billy Bob's Burgers & Subs</h1>
         <h3>Food with attitude</h3><br>
-
-
+        
         <form class="border border-secondary-subtle border-2 rounded-2" method="post">
 
             <div class="dropdown">
-                <select class="btn btn-secondary" name="sandwichDropdown" aria-label="Please Choose a Sandwich">
+                <select class="btn btn-secondary" name="sandwichDropdown" id="sandwichDropdown" onchange="updateForm()" aria-label="Please Choose a Sandwich">
                     <option selected>Please Choose a Sandwich</option>
-                    <option value="1">Burger</option>
-                    <option value="2">Sub</option>
+                    <option value="burger">Burger</option>
+                    <option value="sub">Sub</option>
                 </select>
             </div><br>
 
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioButtons" id="flexRadioBeef" checked>
-                <label class="form-check-label" for="flexRadioBeef">Beef</label>
+            <div id="divSubMeatSelect">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioButtons" id="flexRadioBeef" checked>
+                    <label class="form-check-label" for="flexRadioBeef">Beef</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioButtons" id="flexRadioChicken">
+                    <label class="form-check-label" for="flexRadioChicken">Chicken</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioButtons" id="flexRadioSalami">
+                    <label class="form-check-label" for="flexRadioSalami">Salami</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioButtons" id="flexRadioMeatball">
+                    <label class="form-check-label" for="flexRadioMeatball">Meatball</label>
+                </div><br>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioButtons" id="flexRadioChicken">
-                <label class="form-check-label" for="flexRadioChicken">Chicken</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioButtons" id="flexRadioSalami">
-                <label class="form-check-label" for="flexRadioSalami">Salami</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioButtons" id="flexRadioMeatball">
-                <label class="form-check-label" for="flexRadioMeatball">Meatball</label>
-            </div><br>
 
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckToasted">
-                <label class="form-check-label" for="flexCheckToasted">Toasted</label>
+            <div id="divSubCheckbox">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckToasted">
+                    <label class="form-check-label" for="flexCheckToasted">Toasted</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckCut">
+                    <label class="form-check-label" for="flexCheckCut">Cut in half</label>
+                </div><br>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckCut">
-                <label class="form-check-label" for="flexCheckCut">Cut in half</label>
-            </div><br>
+
+            <div id="divBurgerCheckbox">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckToastedBun">
+                    <label class="form-check-label" for="flexCheckToastedBun">Toast the Bun</label>
+                </div><br>
+            </div>
 
             <div class="mb-3">
             <select class="form-select" multiple aria-label="Select your toppings">
@@ -95,7 +105,25 @@
     </div>
 
     <script>
+        function updateForm() {
+            let sandwichDropdown  =  document.getElementById("sandwichDropdown");
+            let sandwichValue = sandwichDropdown.options[sandwichDropdown.selectedIndex].value;
+            let divSubMeatSelect =  document.getElementById("divSubMeatSelect");
+            let divSubCheckBox =  document.getElementById("divSubCheckbox");
+            let divBurgerCheckbox = document.getElementById("divBurgerCheckbox")
 
+            if (sandwichValue === "burger") {
+                divSubMeatSelect.style.display = "none";
+                divSubCheckBox.style.display = "none";
+                divBurgerCheckbox.style.display = "block";
+
+            }
+            else {
+                divSubMeatSelect.style.display = "block";
+                divSubCheckBox.style.display = "block";
+                divBurgerCheckbox.style.display = "none";
+            }
+        }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
